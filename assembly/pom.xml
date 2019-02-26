@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cb</groupId>
+	<artifactId>assembly</artifactId>
+	<packaging>ear</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>assembly Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<cxfttest.presentation.version>1.0-SNAPSHOT</cxfttest.presentation.version>
+		<cxftest.webapp.version>1.0-SNAPSHOT</cxftest.webapp.version>
+		<apache.cxf.version>2.7.3</apache.cxf.version>
+		<spring.web.version>3.0.4.RELEASE</spring.web.version>
+
+	</properties>
+
+	<dependencies>
+		<!-- START CXF DEPENDENCIES -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${apache.cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${apache.cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-bindings-soap</artifactId>
+			<version>${apache.cxf.version}</version>
+		</dependency>
+		<!-- END CFX DEPENDENCIES -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- START INTERNAL DEPENDENCIES -->
+		<dependency>
+			<groupId>com.cb</groupId>
+			<artifactId>cxfttest-presentation</artifactId>
+			<version>${cxfttest.presentation.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.cb</groupId>
+			<artifactId>cxftest-assembly</artifactId>
+			<version>${cxftest.webapp.version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.web.version}</version>
+		</dependency>
+		<!-- END INTERNAL DEPENDENCIES -->
+	</dependencies>
+
+	<build>
+		<finalName>assembly</finalName>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.10.1</version>
+				<configuration>
+					<version>6</version>
+					<defaultLibBundleDir>lib/</defaultLibBundleDir>
+					<skinnyWars>true</skinnyWars>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+
+					<modules>
+						<jarModule>
+							<groupId>com.cb</groupId>
+							<artifactId>cxfttest-presentation</artifactId>
+						</jarModule>
+
+						<webModule>
+							<groupId>com.cb</groupId>
+							<artifactId>cxftest-assembly</artifactId>
+							<bundleFileName>cxftest-assembly.war</bundleFileName>
+						</webModule>
+
+					</modules>
+
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
