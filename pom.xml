@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.cb</groupId>
+	<artifactId>cxftest</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>cxftest</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.project.version>3.8.1</junit.project.version>
+		<apache.cxf.version>2.7.3</apache.cxf.version>
+		<javax.servlet.project.version>2.5</javax.servlet.project.version>
+		<spring.version>5.1.4.RELEASE</spring.version>
+		<spring.web.version>3.0.4.RELEASE</spring.web.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.project.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>${javax.servlet.project.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- START SPRING DEPENDENCIES -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<!-- END SPRING DEPENDENCIES -->
+			<!-- START CXF DEPENDENCIES -->
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				<version>${apache.cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http</artifactId>
+				<version>${apache.cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-bindings-soap</artifactId>
+				<version>${apache.cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.web.version}</version>
+			</dependency>
+			<!-- END CFX DEPENDENCIES -->
+		</dependencies>
+
+	</dependencyManagement>
+
+	<modules>
+		<module>cxftest-assembly</module>
+		<module>cxfttest-presentation</module>
+	</modules>
+
+</project>
