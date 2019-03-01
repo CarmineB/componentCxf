@@ -19,6 +19,7 @@
 		<javax.servlet.project.version>2.5</javax.servlet.project.version>
 		<spring.version>5.1.4.RELEASE</spring.version>
 		<spring.web.version>3.0.4.RELEASE</spring.web.version>
+		<kafka.project.version>1.0.1</kafka.project.version>
 	</properties>
 
 	<dependencyManagement>
@@ -66,6 +67,11 @@
 				<version>${spring.web.version}</version>
 			</dependency>
 			<!-- END CFX DEPENDENCIES -->
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka_2.12</artifactId>
+				<version>${kafka.project.version}</version>
+			</dependency>
 		</dependencies>
 
 	</dependencyManagement>

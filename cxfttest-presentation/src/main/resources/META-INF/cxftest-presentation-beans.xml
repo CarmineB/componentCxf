@@ -8,6 +8,19 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-<bean id="developerPresentationService" class="org.cxfttest.presentation.api.DeveloperServiceImpl"/>
+<bean id="developerPresentationService" class="org.cxfttest.presentation.api.DeveloperServiceImpl">
+	<property name="properties" ref="props" />
+</bean>
+
+	<util:properties id="props">
+		<prop key="bootstrap.servers">localhost:9092</prop>
+		<prop key="acks">all</prop>
+		<prop key="retries">0</prop>
+		<prop key="batch.size">16384</prop>
+		<prop key="linger.ms">1</prop>
+		<prop key="buffer.memory">33554432</prop>
+		<prop key="key.serializer">org.apache.kafka.common.serialization.StringSerializer</prop>
+		<prop key="value.serializer">org.apache.kafka.common.serialization.StringSerializer</prop>
+	</util:properties>
 
 </beans>
